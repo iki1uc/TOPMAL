@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>TOPMAL · 6E→6D‑Viewer</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { text-align:center; color:#6cf; }
+.box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
+pre { white-space:pre; }
+</style>
+
+<script src="core/ALL.master.js"></script>
+
+</head>
+
+<body>
+
+<h1>TOPMAL · 6E→6D‑Viewer</h1>
+
+<div id="six" class="box"></div>
+
+<script>
+(async () => {
+    const files = await ALL_MASTER.start();
+    document.getElementById("six").innerHTML =
+        "<h2>6E→6D‑Engine</h2><pre>" + JSON.stringify(files.tertiary, null, 2) + "</pre>";
+})();
+</script>
+
+</body>
+</html>
