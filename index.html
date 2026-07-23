@@ -2,46 +2,59 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>TOPMAL · 12X System · GEO + Effekte</title>
+<title>TOPMAL · RDY · 12X System · GEO + Effekte</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+nav { margin-bottom:20px; }
+nav a { color:#6cf; margin-right:20px; text-decoration:none; font-size:20px; }
 .box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
 pre { white-space:pre; }
 h2 { color:#6cf; }
 </style>
 
 <!-- ROOT -->
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/ROOT.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/ROOT.js"></script>
 
 <!-- GEO + EFFECT -->
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/GEO.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/EFFECT.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/GEO.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/EFFECT.js"></script>
 
 <!-- ENGINES -->
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X1.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/y1.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/X1.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/y1.js"></script>
 
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X2.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/showX2.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/X2.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/showX2.js"></script>
 
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/12.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/24.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/12.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/24.js"></script>
 
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X4.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/showX4.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/X4.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/showX4.js"></script>
 
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X5.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/showX5.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/X5.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/showX5.js"></script>
 
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X6.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/showX6.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/X6.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/iki1uc/RDY/showX6.js"></script>
 
 </head>
 
 <body>
 
-<h1>TOPMAL · 12X System · GEO + Effekte</h1>
+<h1>TOPMAL · RDY · 12X System</h1>
+
+<nav>
+    <a href="#" onclick="show('geo')">GEO</a>
+    <a href="#" onclick="show('effect')">Effekte</a>
+    <a href="#" onclick="show('x1')">X1</a>
+    <a href="#" onclick="show('x2')">X2</a>
+    <a href="#" onclick="show('x3')">X3</a>
+    <a href="#" onclick="show('x4')">X4</a>
+    <a href="#" onclick="show('x5')">X5</a>
+    <a href="#" onclick="show('x6')">X6</a>
+</nav>
 
 <div id="geo" class="box"></div>
 <div id="effect" class="box"></div>
@@ -54,6 +67,11 @@ h2 { color:#6cf; }
 <div id="x6" class="box"></div>
 
 <script>
+function show(id){
+    document.querySelectorAll('.box').forEach(b => b.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+}
+
 (async () => {
 
     /* ROOT */
@@ -86,6 +104,9 @@ h2 { color:#6cf; }
 
     /* X6 */
     await showX6(files);
+
+    /* Startseite */
+    show('geo');
 
 })();
 </script>
