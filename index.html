@@ -2,98 +2,57 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>AI3ki · ROOT · NC² · 6E→6D</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TOPMAL · ROOT‑Fusion</title>
+
 <style>
-    body {
-        background:#0a0a0a;
-        color:#e0e0e0;
-        font-family:monospace;
-        padding:40px;
-    }
-    h1 {
-        text-align:center;
-        color:#6cf;
-        margin-bottom:40px;
-    }
-    h2 {
-        color:#9df;
-        border-bottom:1px solid #333;
-        padding-bottom:6px;
-        margin-top:40px;
-    }
-    ul {
-        list-style:none;
-        padding-left:0;
-        margin-top:15px;
-    }
-    li {
-        margin:8px 0;
-    }
-    a {
-        color:#6cf;
-        text-decoration:none;
-        font-size:1.1em;
-    }
-    a:hover {
-        color:#fff;
-        text-decoration:underline;
-    }
-    .section {
-        margin-bottom:40px;
-    }
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { text-align:center; color:#6cf; }
+.box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
+pre { white-space:pre; }
 </style>
 </head>
 
 <body>
 
-<h1>AI3ki · ROOT · NC² · 6E→6D</h1>
+<h1>TOPMAL · ROOT‑Fusion</h1>
 
-<div class="section">
-    <h2>6E → 6D · Kernmodule</h2>
-    <ul>
-        <li><a href="6E → 6D.tech">6E → 6D.tech</a></li>
-        <li><a href="6D‑Baum.raw">6D‑Baum.raw</a></li>
-        <li><a href="12e allin allout.room">12e allin allout.room</a></li>
-        <li><a href="D.room">D.room</a></li>
-    </ul>
-</div>
+<div id="root" class="box"></div>
 
-<div class="section">
-    <h2>NC² · Matrix</h2>
-    <ul>
-        <li><a href="NC²">NC²</a></li>
-        <li><a href="NC² (1)">NC² (1)</a></li>
-        <li><a href="NC²octa².dual">NC²octa².dual</a></li>
-        <li><a href="NC²octa²□.merge">NC²octa²□.merge</a></li>
-        <li><a href="NC²□ (1).lock">NC²□ (1).lock</a></li>
-        <li><a href="NC²□ (1).sync">NC²□ (1).sync</a></li>
-        <li><a href="NC²□.lock">NC²□.lock</a></li>
-        <li><a href="NC²□.sync">NC²□.sync</a></li>
-        <li><a href="NC²□octa³.align">NC²□octa³.align</a></li>
-    </ul>
-</div>
+<script>
+(async () => {
 
-<div class="section">
-    <h2>ROOM‑Engine</h2>
-    <ul>
-        <li><a href="T.room">T.room</a></li>
-        <li><a href="12e allin allout.room">12e allin allout.room</a></li>
-        <li><a href="D.room">D.room</a></li>
-    </ul>
-</div>
+    const files = [
+        "6E → 6D.tech",
+        "6D‑Baum.raw",
+        "12e allin allout.room",
+        "D.room",
+        "NC²",
+        "NC² (1)",
+        "NC²octa².dual",
+        "NC²octa²□.merge",
+        "NC²□ (1).lock",
+        "NC²□ (1).sync",
+        "NC²□.lock",
+        "NC²□.sync",
+        "NC²□octa³.align"
+    ];
 
-<div class="section">
-    <h2>STATIONEN</h2>
-    <ul>
-        <li><a href="STATIONEN.raw">STATIONEN.raw</a></li>
-        <li><a href="index.html">Stationen‑Index</a></li>
-    </ul>
-</div>
+    let out = "<h2>ROOT‑Fusion</h2>";
 
-<div class="section">
-    <h2>Level‑Pyramiden (CSV)</h2>
-    <ul>
-        <li><a href="level-pyramiden-7.csv">level‑pyramiden‑7.csv</a></li>
-        <li><a href="level-pyramiden-7 (1).csv">level‑pyramiden‑7 (1).csv</a></li>
-        <li><a href="level-pyramiden-7 (2).csv">level‑pyramiden‑7 (2).csv</a></li>
+    for(const f of files){
+        try {
+            const res = await fetch(f);
+            const txt = await res.text();
+            out += `<h3>${f}</h3><pre>${txt}</pre>`;
+        } catch {
+            out += `<h3>${f}</h3><pre>(nicht gefunden)</pre>`;
+        }
+    }
+
+    document.getElementById("root").innerHTML = out;
+
+})();
+</script>
+
+</body>
+</html>
