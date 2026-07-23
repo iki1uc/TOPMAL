@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>TOPMAL · NC²‑Viewer</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { text-align:center; color:#6cf; }
+.box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
+pre { white-space:pre; }
+</style>
+
+<script src="core/ALL.master.js"></script>
+
+</head>
+
+<body>
+
+<h1>TOPMAL · NC²‑Viewer</h1>
+
+<div id="nc2" class="box"></div>
+
+<script>
+(async () => {
+    const files = await ALL_MASTER.start();
+    document.getElementById("nc2").innerHTML =
+        "<h2>NC²‑Matrix</h2><pre>" + JSON.stringify(files.secondary, null, 2) + "</pre>";
+})();
+</script>
+
+</body>
+</html>
