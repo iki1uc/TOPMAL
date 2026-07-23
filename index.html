@@ -12,11 +12,11 @@ h2 { color:#6cf; }
 </style>
 
 <!-- ENGINE MODULES -->
-<script src="X1.js"></script>
-<script src="y1.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X1.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/y1.js"></script>
 
-<script src="12.js"></script>
-<script src="24.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/12.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/24.js"></script>
 
 </head>
 
@@ -31,13 +31,13 @@ h2 { color:#6cf; }
 <script>
 (async () => {
 
-    /* 1) TECH‑Module laden (3‑Zeichen + .tech) */
+    /* TECH-MODULE */
     const techFiles = ["RSP.tech","NC2.tech","6ED.tech","ROM.tech"];
     let techOut = "<h2>TECH‑Module</h2>";
 
     for(const f of techFiles){
         try {
-            const res = await fetch(f);
+            const res = await fetch(`https://raw.githubusercontent.com/iki1uc/TOPMAL/main/${f}`);
             const txt = await res.text();
             techOut += `<h3>${f}</h3><pre>${txt}</pre>`;
         } catch {
@@ -47,13 +47,13 @@ h2 { color:#6cf; }
 
     document.getElementById("tech").innerHTML = techOut;
 
-    /* 2) ROOT‑Dateien laden */
+    /* ROOT-DATEIEN */
     const files = await ALL_MASTER.start();
 
-    /* 3) X1 starten (RESPO381) */
+    /* X1 */
     await showX1(files);
 
-    /* 4) X3 starten (6E→6D) */
+    /* X3 */
     await showX3(files);
 
 })();
