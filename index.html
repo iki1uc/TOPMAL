@@ -2,11 +2,10 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>TOPMAL · ROOT‑Fusion (ASCII‑Fix)</title>
+<title>TOPMAL · 6E/6D · TECH‑Fusion</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
-h1 { text-align:center; color:#6cf; }
 .box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
 pre { white-space:pre; }
 </style>
@@ -14,47 +13,17 @@ pre { white-space:pre; }
 
 <body>
 
-<h1>TOPMAL · ROOT‑Fusion</h1>
+<h1>TECH‑Fusion · 6E/6D</h1>
 
-<div id="root" class="box"></div>
+<div id="fusion" class="box"></div>
 
 <script>
 (async () => {
 
-    const files = [
-        "6E_to_6D.tech",
-        "6D-Baum.raw",
-        "12e_allin_allout.room",
-        "D.room",
+    const techFiles = ["RSP.tech","NC2.tech","6ED.tech","ROM.tech"];
+    let out = "<h2>TECH‑Module</h2>";
 
-        "NC2",
-        "NC2.1",
-        "NC2octa2.dual",
-        "NC2octa2box.merge",
-        "NC2box.lock",
-        "NC2box.sync",
-        "NC2box_1.lock",
-        "NC2box_1.sync1",
-        "NC2boxocta3.align",
-
-        "STATIONEN.raw",
-        "T.room",
-
-        "level-pyramiden-7.csv",
-        "level-pyramiden-71.csv",
-        "level-pyramiden-72.csv",
-        "level-pyramiden-73.csv",
-        "level-pyramiden-74.csv",
-        "level-pyramiden-75.csv",
-        "level-pyramiden-76.csv",
-        "level-pyramiden-77.csv",
-
-        "raw.raw"
-    ];
-
-    let out = "<h2>ROOT‑Fusion</h2>";
-
-    for(const f of files){
+    for(const f of techFiles){
         try {
             const res = await fetch(f);
             const txt = await res.text();
@@ -64,7 +33,7 @@ pre { white-space:pre; }
         }
     }
 
-    document.getElementById("root").innerHTML = out;
+    document.getElementById("fusion").innerHTML = out;
 
 })();
 </script>
