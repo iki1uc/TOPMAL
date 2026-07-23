@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>TOPMAL · 6E/6D · TECH‑Fusion</title>
+<title>TOPMAL · 12X System</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
@@ -11,27 +11,38 @@ pre { white-space:pre; }
 h2 { color:#6cf; }
 </style>
 
-<!-- ENGINE MODULES -->
+<!-- ENGINE MODULES (RAW GITHUB LINKS) -->
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X1.js"></script>
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/y1.js"></script>
 
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/12.js"></script>
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/24.js"></script>
 
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X2.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X4.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X5.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X6.js"></script>
+<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X7.js"></script>
+
 </head>
 
 <body>
 
-<h1>TOPMAL · 6E/6D · TECH‑Fusion</h1>
+<h1>TOPMAL · 12X System · GEO + Effekte</h1>
 
 <div id="tech" class="box"></div>
 <div id="x1" class="box"></div>
+<div id="x2" class="box"></div>
 <div id="x3" class="box"></div>
+<div id="x4" class="box"></div>
+<div id="x5" class="box"></div>
+<div id="x6" class="box"></div>
+<div id="x7" class="box"></div>
 
 <script>
 (async () => {
 
-    /* TECH-MODULE */
+    /* TECH MODULE */
     const techFiles = ["RSP.tech","NC2.tech","6ED.tech","ROM.tech"];
     let techOut = "<h2>TECH‑Module</h2>";
 
@@ -53,8 +64,23 @@ h2 { color:#6cf; }
     /* X1 */
     await showX1(files);
 
+    /* X2 */
+    if (typeof showX2 === "function") await showX2(files);
+
     /* X3 */
     await showX3(files);
+
+    /* X4 */
+    if (typeof showX4 === "function") await showX4(files);
+
+    /* X5 */
+    if (typeof showX5 === "function") await showX5(files);
+
+    /* X6 */
+    if (typeof showX6 === "function") await showX6(files);
+
+    /* X7 */
+    if (typeof startX7 === "function") await startX7(files);
 
 })();
 </script>
