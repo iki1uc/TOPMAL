@@ -2,42 +2,31 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>TOPMAL · 12X System</title>
+<title>TOPMAL · Pyramiden‑Viewer · 6E/6D</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { text-align:center; color:#6cf; }
 .box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
 pre { white-space:pre; }
-h2 { color:#6cf; }
 </style>
 
-<!-- ENGINE MODULES (RAW GITHUB LINKS) -->
+<!-- ENGINE MODULES -->
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X1.js"></script>
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/y1.js"></script>
-
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/12.js"></script>
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/24.js"></script>
-
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X2.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X4.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X5.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X6.js"></script>
-<script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X7.js"></script>
 
 </head>
 
 <body>
 
-<h1>TOPMAL · 12X System · GEO + Effekte</h1>
+<h1>TOPMAL · Pyramiden‑Viewer · 6E/6D</h1>
 
 <div id="tech" class="box"></div>
 <div id="x1" class="box"></div>
-<div id="x2" class="box"></div>
 <div id="x3" class="box"></div>
-<div id="x4" class="box"></div>
-<div id="x5" class="box"></div>
-<div id="x6" class="box"></div>
-<div id="x7" class="box"></div>
+<div id="pyramids" class="box"></div>
 
 <script>
 (async () => {
@@ -47,13 +36,9 @@ h2 { color:#6cf; }
     let techOut = "<h2>TECH‑Module</h2>";
 
     for(const f of techFiles){
-        try {
-            const res = await fetch(`https://raw.githubusercontent.com/iki1uc/TOPMAL/main/${f}`);
-            const txt = await res.text();
-            techOut += `<h3>${f}</h3><pre>${txt}</pre>`;
-        } catch {
-            techOut += `<h3>${f}</h3><pre>(nicht gefunden)</pre>`;
-        }
+        const res = await fetch(`https://raw.githubusercontent.com/iki1uc/TOPMAL/main/${f}`);
+        const txt = await res.text();
+        techOut += `<h3>${f}</h3><pre>${txt}</pre>`;
     }
 
     document.getElementById("tech").innerHTML = techOut;
@@ -61,26 +46,33 @@ h2 { color:#6cf; }
     /* ROOT-DATEIEN */
     const files = await ALL_MASTER.start();
 
-    /* X1 */
+    /* X1 (RESPO381) */
     await showX1(files);
 
-    /* X2 */
-    if (typeof showX2 === "function") await showX2(files);
-
-    /* X3 */
+    /* X3 (6E→6D) */
     await showX3(files);
 
-    /* X4 */
-    if (typeof showX4 === "function") await showX4(files);
+    /* PYRAMIDEN CSV */
+    const pyramids = [
+        "level-pyramiden-7.csv",
+        "level-pyramiden-7 (1).csv",
+        "level-pyramiden-7 (2).csv",
+        "level-pyramiden-7 (3).csv",
+        "level-pyramiden-7 (4).csv",
+        "level-pyramiden-7 (5).csv",
+        "level-pyramiden-7 (6).csv",
+        "level-pyramiden-7 (7).csv"
+    ];
 
-    /* X5 */
-    if (typeof showX5 === "function") await showX5(files);
+    let out = "<h2>Pyramiden‑CSV</h2>";
 
-    /* X6 */
-    if (typeof showX6 === "function") await showX6(files);
+    for(const f of pyramids){
+        const res = await fetch(`https://raw.githubusercontent.com/iki1uc/TOPMAL/main/${f}`);
+        const txt = await res.text();
+        out += `<h3>${f}</h3><pre>${txt}</pre>`;
+    }
 
-    /* X7 */
-    if (typeof startX7 === "function") await startX7(files);
+    document.getElementById("pyramids").innerHTML = out;
 
 })();
 </script>
