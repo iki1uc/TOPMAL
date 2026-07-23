@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>TOPMAL · ID · ROOT‑Identität</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { text-align:center; color:#6cf; }
+.box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
+pre { white-space:pre; }
+</style>
+
+<script src="core/ALL.master.js"></script>
+<script src="core/VECTOR.master.js"></script>
+<script src="core/INDEX.master.js"></script>
+
+</head>
+
+<body>
+
+<h1>TOPMAL · ID · ROOT‑Identität</h1>
+
+<div id="id_all" class="box"></div>
+<div id="id_vector" class="box"></div>
+<div id="id_index" class="box"></div>
+<div id="id_root" class="box"></div>
+
+<script>
+(async () => {
+
+    const files = await ALL_MASTER.start();
+
+    const index = INDEX_MASTER.start(files);
+    const vector = VECTOR_MASTER.start(files);
+    const all = ALL_HYPERRAUM.build(["AIR","HOME","REAL","USE"]);
+
+    document.getElementById("id_all").innerHTML =
+        "<h2>ALL · RESPO381</h2><pre>" + JSON.stringify(all, null, 2) + "</pre>";
+
+    document.getElementById("id_vector").innerHTML =
+        "<h2>VECTOR · 381‑Ringe</h2><pre>" + JSON.stringify(vector, null, 2) + "</pre>";
+
+    document.getElementById("id_index").innerHTML =
+        "<h2>INDEX · 381‑KARO</h2><pre>" + JSON.stringify(index, null, 2) + "</pre>";
+
+    document.getElementById("id_root").innerHTML =
+        "<h2>TOPMAL · ROOT‑Files</h2><pre>" + JSON.stringify(files, null, 2) + "</pre>";
+
+})();
+</script>
+
+</body>
+</html>
