@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>TOPMAL · Pyramiden‑Viewer</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { text-align:center; color:#6cf; }
+.box { background:#111; padding:20px; margin:20px 0; border-left:3px solid #6cf; }
+pre { white-space:pre; }
+</style>
+</head>
+
+<body>
+
+<h1>TOPMAL · Pyramiden‑Viewer</h1>
+
+<div id="pyramids" class="box"></div>
+
+<script>
+(async () => {
+
+    const files = [
+        "level-pyramiden-7.csv",
+        "level-pyramiden-7 (1).csv",
+        "level-pyramiden-7 (2).csv",
+        "level-pyramiden-7 (3).csv",
+        "level-pyramiden-7 (4).csv",
+        "level-pyramiden-7 (5).csv",
+        "level-pyramiden-7 (6).csv",
+        "level-pyramiden-7 (7).csv"
+    ];
+
+    let out = "<h2>Pyramiden‑CSV</h2>";
+
+    for(const f of files){
+        const res = await fetch(f);
+        const txt = await res.text();
+        out += `<h3>${f}</h3><pre>${txt}</pre>`;
+    }
+
+    document.getElementById("pyramids").innerHTML = out;
+
+})();
+</script>
+
+</body>
+</html>
