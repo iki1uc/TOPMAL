@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>TOPMAL · Pyramiden‑Viewer · 6E/6D</title>
+<title>TOPMAL · STATIONEN‑Viewer · 6E/6D</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
@@ -11,7 +11,6 @@ h1 { text-align:center; color:#6cf; }
 pre { white-space:pre; }
 </style>
 
-<!-- ENGINE MODULES -->
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/X1.js"></script>
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/y1.js"></script>
 <script src="https://raw.githubusercontent.com/iki1uc/TOPMAL/main/12.js"></script>
@@ -21,12 +20,12 @@ pre { white-space:pre; }
 
 <body>
 
-<h1>TOPMAL · Pyramiden‑Viewer · 6E/6D</h1>
+<h1>TOPMAL · STATIONEN‑Viewer · 6E/6D</h1>
 
 <div id="tech" class="box"></div>
 <div id="x1" class="box"></div>
 <div id="x3" class="box"></div>
-<div id="pyramids" class="box"></div>
+<div id="stations" class="box"></div>
 
 <script>
 (async () => {
@@ -46,33 +45,18 @@ pre { white-space:pre; }
     /* ROOT-DATEIEN */
     const files = await ALL_MASTER.start();
 
-    /* X1 (RESPO381) */
+    /* X1 */
     await showX1(files);
 
-    /* X3 (6E→6D) */
+    /* X3 */
     await showX3(files);
 
-    /* PYRAMIDEN CSV */
-    const pyramids = [
-        "level-pyramiden-7.csv",
-        "level-pyramiden-7 (1).csv",
-        "level-pyramiden-7 (2).csv",
-        "level-pyramiden-7 (3).csv",
-        "level-pyramiden-7 (4).csv",
-        "level-pyramiden-7 (5).csv",
-        "level-pyramiden-7 (6).csv",
-        "level-pyramiden-7 (7).csv"
-    ];
+    /* STATIONEN */
+    const res = await fetch("https://raw.githubusercontent.com/iki1uc/TOPMAL/main/STATIONEN.raw");
+    const txt = await res.text();
 
-    let out = "<h2>Pyramiden‑CSV</h2>";
-
-    for(const f of pyramids){
-        const res = await fetch(`https://raw.githubusercontent.com/iki1uc/TOPMAL/main/${f}`);
-        const txt = await res.text();
-        out += `<h3>${f}</h3><pre>${txt}</pre>`;
-    }
-
-    document.getElementById("pyramids").innerHTML = out;
+    document.getElementById("stations").innerHTML =
+        "<h2>STATIONEN.raw</h2><pre>" + txt + "</pre>";
 
 })();
 </script>
